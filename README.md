@@ -4,11 +4,6 @@ A zero-dependency static web page that discovers, connects/pairs, and reads card
 **Transact MRD5** BLE reader directly in the browser using the
 [Web Bluetooth API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API).
 
-It re-implements the GATT flow proven in the RoboJackets `apiary-mobile` Android app
-(`Mrd5Manager.kt` / `CardRead.kt`, commit `d75cc401`): connect → discover the MLDP service →
-enable notifications on the data characteristic → receive ASCII card-read text, debounce
-80 ms, parse, and display.
-
 ## Security & disclaimer
 
 This tool does **not** break, bypass, or weaken any encryption, key, or security protocol.
