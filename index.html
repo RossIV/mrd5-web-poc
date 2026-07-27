@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MRD5 Web Bluetooth POC</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>MRD5 Web Bluetooth POC</h1>
+      <p class="sub">Discover, connect, and read cards from a Transact MRD5 over Web Bluetooth.</p>
+    </header>
+
+    <!-- Shown when navigator.bluetooth is unavailable -->
+    <div id="unsupported" class="banner banner--error" hidden>
+      <strong>Web Bluetooth is not available in this browser.</strong>
+      Use Chrome or Edge (desktop or Android) over <code>https</code> or
+      <code>http://localhost</code>. Firefox and iOS/Safari are not supported.
+    </div>
+
+    <section class="controls">
+      <button id="connectBtn" type="button">Connect</button>
+      <button id="disconnectBtn" type="button" disabled>Disconnect</button>
+      <span id="status" class="pill pill--idle">Disconnected</span>
+      <span id="deviceName" class="device"></span>
+    </section>
+
+    <section class="info">
+      <div class="info__item">
+        <span class="info__label">Battery</span>
+        <span id="battery" class="info__value">Unknown</span>
+      </div>
+      <div class="info__item">
+        <span class="info__label">Manufacturer</span>
+        <span id="manufacturer" class="info__value">Unknown</span>
+      </div>
+      <div class="info__item">
+        <span class="info__label">Model</span>
+        <span id="model" class="info__value">Unknown</span>
+      </div>
+      <div class="info__item">
+        <span class="info__label">Firmware</span>
+        <span id="firmware" class="info__value">Unknown</span>
+      </div>
+      <div class="info__item">
+        <span class="info__label">Hardware</span>
+        <span id="hardware" class="info__value">Unknown</span>
+      </div>
+      <div class="info__item">
+        <span class="info__label">Software</span>
+        <span id="software" class="info__value">Unknown</span>
+      </div>
+    </section>
+
+    <section class="panels">
+      <div class="panel">
+        <div class="panel__head">
+          <h2>Card Reads</h2>
+          <button id="clearReadsBtn" type="button" class="link">clear</button>
+        </div>
+        <table id="readsTable">
+          <thead>
+            <tr><th>Time</th><th>Data</th></tr>
+          </thead>
+          <tbody id="readsBody">
+            <tr class="empty"><td colspan="2">No card reads yet. Connect and tap a card.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <div class="panel__head">
+          <h2>Debug Log</h2>
+          <button id="clearLogBtn" type="button" class="link">clear</button>
+        </div>
+        <pre id="log" class="log"></pre>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
